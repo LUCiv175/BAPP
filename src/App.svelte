@@ -1,11 +1,27 @@
 <script>
-  import Gpt from "./lib/gpt.svelte";
+  import Start from "./lib/Start.svelte";
+  import Select from "./lib/Select.svelte";
+  let start = true;
+
+  function startDisappear() {
+    start = !start;
+  }
+    
 </script>
 
 <style>
-  /* Your styles here */
+  :global(body) {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #FB5E05, #7102FF);
+    }
 </style>
 
 <main>
-  <Gpt/>
+  {#if !start}
+    <Select/>
+  {:else}
+    <Start on:click={startDisappear}/>
+  {/if}
+  
 </main>
