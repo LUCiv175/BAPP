@@ -36,6 +36,13 @@
     border-radius: 10px;
     cursor: pointer;
     font-family: "Lilita One", sans-serif;
+    transition: 0.4s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    }
+    .hero-button:hover{
+      background-color: rgba(128, 128, 128, 0.479);
+      color: #fff;
+      transform: scale(1.1);
     }
 
     
