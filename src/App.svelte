@@ -1,12 +1,13 @@
 <script>
   import Start from "./lib/Start.svelte";
   import Select from "./lib/Select.svelte";
-  let start = true;
-
-  function startDisappear() {
-    start = !start;
+  import { store } from "./script/stores";
+  import Gpt from "./lib/gpt.svelte";
+  import Generate from "./lib/Generate.svelte";
+  function startDisappear(){
+    $store.val = 1;
   }
-    
+  $: cm = $store.val;
 </script>
 
 <style>
@@ -18,10 +19,16 @@
 </style>
 
 <main>
-  {#if !start}
-    <Select/>
-  {:else}
+  {#if cm == 0}
     <Start on:click={startDisappear}/>
+  {:else if cm == 1}
+    <Select/>
+  {:else if cm == 2}
+    <Gpt/>
+  {:else if cm == 3}
+    <Generate/>
+  {:else}
+    <p>Something went wrong</p>
   {/if}
   
 </main>
