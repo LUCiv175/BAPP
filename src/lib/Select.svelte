@@ -1,5 +1,6 @@
 <script>
     import { store } from "../script/stores";
+    import {scale, blur} from "svelte/transition";
     
 
     function returnBack(){
@@ -324,10 +325,10 @@
     <!-- Remove 'active' class, this is just to show in Codepen thumbnail -->
     <div class="progress active"></div>
   </div>
-    <div class="hero-content">
-        <h1 class="hero-title">BAPP</h1>
-        <p class="hero-subtitle">Inserisci le materie e i programmi</p>
-        <div class="grid-container">
+    <div class="hero-content">  
+        <h1 class="hero-title" in:blur={{delay:550, duration:350}} out:blur={{duration:350}}>BAPP</h1>
+        <p class="hero-subtitle" in:blur={{delay:675, duration:350}} out:blur={{duration:350}}>Inserisci le materie e i programmi</p>
+        <div class="grid-container" in:scale={{delay:800, duration:400}} out:scale={{duration:400}}>
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[0]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[1]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[2]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[3]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[4]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[5]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
@@ -335,7 +336,7 @@
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[8]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[9]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[10]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[11]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
         </div>
-        <button class="hero-button" on:click={save}>Salva</button>
+        <button class="hero-button" in:blur={{delay:675, duration:350}} out:blur={{duration:350}} on:click={save}>Salva</button>
     </div>
 </div>
 

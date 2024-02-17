@@ -1,4 +1,5 @@
 <script>
+  import {blur, slide} from "svelte/transition";
     import { store, result } from "../script/stores";
     function backToHome(){
         $store.val = 0;
@@ -124,10 +125,10 @@
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADKElEQVR4nO3ZX+jfUxzH8YMZIsKPNcQuuOCG2Vy4wZJ/hcjfYtqS1UrUfhfaUnax5AJtabVEKXfKn9QQSpT/4kYSIuY/m9TYDHvo7Pv+tOPb7/f9fb+/72fb99T3eff7fc55n9frc97nnPf5fFMaM6YecEqqHVyCn1Ot4CDcg38g1QhOwEsKUm3gQnwX+n+ozohOKt2NXaH9dZxUlREcj82heTc24NB4VocRnIcvQ+8vuKLr+WgbsTeV/gqt72HBFO1G1wiOxlNdqTR3mrajaQTn4ovQ9zuun6H96BnBndjZK5Wm6NPwEz7Hu3gGD+MOLJpuNvd1KmUewWF99u2HP/BCvKh57TtIe4Scg8+KVLphiJcxgbNwMVZgPd4oZlmUNM/nNqlFE3nqd8QAH+GM1oL/f5zDo7jchF8LU2/nSmGYwEfhySLgo3mwVtX3NrWsyAKhZWLQQHnqP9nTne24dZ+p7q1jLibxW2jZgsXVGSn0TODZ0PMnbqkitXpUEffF4ZuZHMnFPoCe66K6zoaWH5Dtty2wNIz8jSv394GYB92Gr/Ep3sfTeAC344I8xgB6VkXcrTh5IDMtlCgzkc2+g/vjwJwzQ9xc5mRezmtoNmYWF/eP/Jav7tPIAizEElwbJ/tDeBFfFQu5IV+Xs6nTe3wX+DHarhjYSAQ5Fs9FkCzgweZGOJ2RPrfZm/F4nBkNuyMNz5yiz43R5nscOcyWuKq4o7851Ye4fo109TkYl4WBXUUN9hiO69KQUzyzZlZGimDn45viqnv5sEa6+p+KJ/BvhPq2LChjPYka7YhhzUxEGS4GXIdD2jDSgLOLt5/T7d7i2Yfx/9vSsMQ0r47dJ/Ma5rdlJJPXYWwAzexsjDRcGX+/lWr6QIebio8eG+Ocy3Vh5rQ2B5qHV8u9tLXgAS4tzrTJ4ly5K7VJXiNY26RBq8GDXAkX5UqemcwrqcafFXQOVUU6b5+pKhjJH3p0bpQfl2mcv36mGsFFXUZmV7KMAjrFY8OGVCu4pjCyOdUK5kT5kvkg1Yy9O9iWVDO4KozsSDWDE5uiMtWOzqXvmAOtY8yYMWn/8B/TbS1rji7GgQAAAABJRU5ErkJggg==" class="back" on:click={goBack}>
   <div class="hero">
     <div class="hero-content">
-      <h1 class="hero-title">BAPP</h1>
-      <p class="hero-subtitle">I tuoi collegamenti</p>
-      <textarea class="outputChat" id="outputChat" cols="30" rows="10" disabled bind:value={res}></textarea>
-      <button class="hero-button" on:click={backToHome}>Torna alla home</button>
+      <h1 class="hero-title" in:blur={{delay:1100, duration:350}} out:blur={{duration:350}}>BAPP</h1>
+      <p class="hero-subtitle" in:blur={{delay:1225, duration:350}} out:blur={{duration:350}}>I tuoi collegamenti</p>
+      <textarea in:slide={{delay:1275, duration:350}} out:slide={{duration:350}} class="outputChat" id="outputChat" cols="30" rows="10" disabled bind:value={res}></textarea>
+      <button class="hero-button" on:click={backToHome} in:blur={{delay:1100, duration:350}} out:blur={{duration:350}}>Torna alla home</button>
       
     </div>
   </div>
