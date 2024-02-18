@@ -1,4 +1,5 @@
 <script>
+import {blur} from "svelte/transition";
 </script>
 
 <style>
@@ -62,7 +63,7 @@
 
   
 </style>
-  <div class="hero">
+  <div class="hero" in:blur={{delay:400, duration:350}} out:blur={{duration:500}}>
     <div class="hero-content">
       <h1 class="hero-title">BAPP</h1>
       <p class="hero-subtitle">Il migliore amico della tua maturita!</p>

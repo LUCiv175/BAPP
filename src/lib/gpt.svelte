@@ -1,4 +1,5 @@
 <script>
+  import {blur, slide} from "svelte/transition";
   import { result, store } from "../script/stores";
   import OpenAI from "openai";
     const openai = new OpenAI({
@@ -293,10 +294,10 @@
     <div class="progress active"></div>
   </div>
       <div class="hero-content">
-        <h1 class="hero-title">BAPP</h1>
-        <p class="hero-subtitle">Inserisci il materiale e genera i collegamenti</p>
-        <input type="text" class="input-text" bind:value={word} placeholder="Inserisci lo stimolo"><br>
-        <button class="hero-button" on:click={btnsend}>Genera</button>
+        <h1 class="hero-title" in:blur={{delay:725, duration:350}} out:blur={{duration:350}}>BAPP</h1>
+        <p class="hero-subtitle"in:blur={{delay:850, duration:350}} out:blur={{duration:350}}>Inserisci il materiale e genera i collegamenti</p>
+        <input type="text" class="input-text"in:slide={{delay:1000, duration:350}} out:slide={{duration:350}} bind:value={word} placeholder="Inserisci lo stimolo"><br>
+        <button in:blur={{delay:725, duration:350}} out:blur={{duration:350}} class="hero-button" on:click={btnsend}>Genera</button>
       </div>
     </div>
   

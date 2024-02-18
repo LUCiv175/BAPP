@@ -1,5 +1,7 @@
 <script>
     import { store } from "../script/stores";
+    import {scale, blur, slide} from "svelte/transition";
+    $:pippo = 0;
     
 
     function returnBack(){
@@ -8,10 +10,9 @@
 
     function save(){
         if(prompt.length < 12){
-            var alert = document.getElementById("alert");
-            alert.style.display = "block";
+            pippo=1;
             setTimeout(function() {
-            alert.style.display = "none";
+            pippo=0;
             }, 4000); // 3000 millisecondi = 3 secondi
                 }
         else{
@@ -309,12 +310,13 @@
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADKElEQVR4nO3ZX+jfUxzH8YMZIsKPNcQuuOCG2Vy4wZJ/hcjfYtqS1UrUfhfaUnax5AJtabVEKXfKn9QQSpT/4kYSIuY/m9TYDHvo7Pv+tOPb7/f9fb+/72fb99T3eff7fc55n9frc97nnPf5fFMaM6YecEqqHVyCn1Ot4CDcg38g1QhOwEsKUm3gQnwX+n+ozohOKt2NXaH9dZxUlREcj82heTc24NB4VocRnIcvQ+8vuKLr+WgbsTeV/gqt72HBFO1G1wiOxlNdqTR3mrajaQTn4ovQ9zuun6H96BnBndjZK5Wm6NPwEz7Hu3gGD+MOLJpuNvd1KmUewWF99u2HP/BCvKh57TtIe4Scg8+KVLphiJcxgbNwMVZgPd4oZlmUNM/nNqlFE3nqd8QAH+GM1oL/f5zDo7jchF8LU2/nSmGYwEfhySLgo3mwVtX3NrWsyAKhZWLQQHnqP9nTne24dZ+p7q1jLibxW2jZgsXVGSn0TODZ0PMnbqkitXpUEffF4ZuZHMnFPoCe66K6zoaWH5Dtty2wNIz8jSv394GYB92Gr/Ep3sfTeAC344I8xgB6VkXcrTh5IDMtlCgzkc2+g/vjwJwzQ9xc5mRezmtoNmYWF/eP/Jav7tPIAizEElwbJ/tDeBFfFQu5IV+Xs6nTe3wX+DHarhjYSAQ5Fs9FkCzgweZGOJ2RPrfZm/F4nBkNuyMNz5yiz43R5nscOcyWuKq4o7851Ye4fo109TkYl4WBXUUN9hiO69KQUzyzZlZGimDn45viqnv5sEa6+p+KJ/BvhPq2LChjPYka7YhhzUxEGS4GXIdD2jDSgLOLt5/T7d7i2Yfx/9vSsMQ0r47dJ/Ma5rdlJJPXYWwAzexsjDRcGX+/lWr6QIebio8eG+Ocy3Vh5rQ2B5qHV8u9tLXgAS4tzrTJ4ly5K7VJXiNY26RBq8GDXAkX5UqemcwrqcafFXQOVUU6b5+pKhjJH3p0bpQfl2mcv36mGsFFXUZmV7KMAjrFY8OGVCu4pjCyOdUK5kT5kvkg1Yy9O9iWVDO4KozsSDWDE5uiMtWOzqXvmAOtY8yYMWn/8B/TbS1rji7GgQAAAABJRU5ErkJggg==" class="back" on:click={returnBack}>
 
 <div class="hero">
-    <div class="toast active" id="alert" style="display: none;">
+    {#if pippo==1}
+    <div class="toast active" id="alert"  in:slide={{delay:100, duration:350}} out:slide={{duration:350}}>
   
-    <div class="toast-content">
+    <div class="toast-content" >
       <i class="fas fa-solid fa-check check"></i>
   
-      <div class="message">
+      <div class="message" >
         <span class="text text-1">Errore!</span>
         <span class="text text-2">Inserisci tutte le materie e i relativi programmi</span>
       </div>
@@ -324,10 +326,11 @@
     <!-- Remove 'active' class, this is just to show in Codepen thumbnail -->
     <div class="progress active"></div>
   </div>
-    <div class="hero-content">
-        <h1 class="hero-title">BAPP</h1>
-        <p class="hero-subtitle">Inserisci le materie e i programmi</p>
-        <div class="grid-container">
+    {/if}
+    <div class="hero-content">  
+        <h1 class="hero-title" in:blur={{delay:550, duration:350}} out:blur={{duration:350}}>BAPP</h1>
+        <p class="hero-subtitle" in:blur={{delay:675, duration:350}} out:blur={{duration:350}}>Inserisci le materie e i programmi</p>
+        <div class="grid-container" in:scale={{delay:800, duration:400}} out:scale={{duration:400}}>
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[0]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[1]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[2]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[3]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[4]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[5]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
@@ -335,7 +338,7 @@
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[8]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[9]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
           <div class="grid-item"><input class="hero-input" type="text" bind:value={prompt[10]}  placeholder="Inserisci Materia" /><br><textarea  class="hero-input-text"  bind:value={prompt[11]} placeholder="Inserisci programma" rows="4" cols="50"/></div>
         </div>
-        <button class="hero-button" on:click={save}>Salva</button>
+        <button class="hero-button" in:blur={{delay:675, duration:350}} out:blur={{duration:350}} on:click={save}>Salva</button>
     </div>
 </div>
 
