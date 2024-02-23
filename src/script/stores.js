@@ -3,6 +3,7 @@ import { writable } from "svelte/store";
 const newStore = {
     val: 0,
     array: [],
+    word: ""
 }
 
 function createStore() {
