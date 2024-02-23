@@ -23,7 +23,7 @@
         const userMessage = mymessage;
         if (userMessage !== '') {
           $store.val = 4;
-          
+          $store.word = word;
           
           const response = await openai.chat.completions.create({
             messages: [{ role: 'system', content: userMessage }],
