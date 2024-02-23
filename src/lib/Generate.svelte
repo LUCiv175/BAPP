@@ -234,7 +234,7 @@
         <span class="icon"><img class="hero-icon" src= "src/assets/regenerate.png" ></span>
         <span class="text"> Rigenera </span>
       </button>
-      
+      <!---->
       </div>
       </div>
     </div>
