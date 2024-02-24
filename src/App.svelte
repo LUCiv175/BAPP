@@ -19,6 +19,7 @@
     margin: 0;
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #FB5E05, #7102FF);
+    background-size: cover;
     }
     
 

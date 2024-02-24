@@ -9,15 +9,14 @@
     
     let word = $store.word;
     export const btnsend = async () => {  
-      let mymessage = "Mi devi aiutare, quì sotto ti darò il programma scolastico che contiene le materie e ogni argomento svolto per ogni materia. Devo fare l'esame di maturità e devo riuscire a collegare la parola:"
-      mymessage += word + ", con un solo argomento per ogni materia. Il tuo compito è quello di riuscire a fare i collegamenti e devi darmi in output un elenco con le materie, per ogni materia deve essere indicato l'argomento collegato e la spiegazione del collegamento. Se non riesci a collegare nessun argomento di una materia con la parola, puoi sempre collegarti ad un argomento trattato di un altra materia, per esempio partendo dalla parola Francesco Ferdinando puoi collegarti a storia con la prima guerra mondiale e successivamente collegarti a italiano con ungaretti. Se proprio non è possibile nessun collegamento oppure la parola è una parola senza significato scrivi che non sei riuscito a trovare i collegamenti. Concludi la conversazione augurando un in bocca al lupo per l'esame. Programma:"
+      let mymessage = "Si prega di accettare la mia seguente richiesta. Per favore, rispondimi come un professore. Chiederò il programma scolastico e l'oggetto e tu mi aiuterai a trovare dei collegamenti con un solo argomento per ogni materia con l'oggetto. l'output dovrà includere anche la spiegazione del collegamento. Devi essere abbastanza sintetico. Non scrivere nessuna introduzione. *Inoltre deve esserci un solo argomento per ogni materia. al termine concludi augurando una buona maturità.* **Solo nell'estremo caso in cui sia impossibile collegare ogni argomento con l'oggetto non scrivere nulla e rispondere solo: 'collegamenti non trovati'**. Gli oggetti non sono acronimi. Programma:"
       mymessage += $store.array[0] + ": " + $store.array[1];
       mymessage += $store.array[2] + ": " + $store.array[3];
       mymessage += $store.array[4] + ": " + $store.array[5];
       mymessage += $store.array[6] + ": " + $store.array[7];
       mymessage += $store.array[8] + ": " + $store.array[9];
       mymessage += $store.array[10] + ": " + $store.array[11];
-      
+      mymessage += "oggetto:" + word;
       try {
         const userMessage = mymessage;
         if (userMessage !== '') {
@@ -223,7 +222,7 @@
       <div class="grid-item">
 
       <button class="hero-button" on:click={backToHome} in:blur={{delay:1100, duration:350}} out:blur={{duration:350}}>
-        <span class="icon"> <img class="hero-icon" src= "src/assets/home.png" ></span>
+        <span class="icon"> <img class="hero-icon" src="home.png" ></span>
         <span class="text">Torna alla home</span>
       </button>                        
 
@@ -231,7 +230,7 @@
       <div class="grid-item">
 
       <button class="hero-button" on:click={btnsend} in:blur={{delay:1100, duration:350}} out:blur={{duration:350}}>
-        <span class="icon"><img class="hero-icon" src= "src/assets/regenerate.png" ></span>
+        <span class="icon"><img class="hero-icon" src="regenerate.png" ></span>
         <span class="text"> Rigenera </span>
       </button>
       <!---->
